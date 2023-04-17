@@ -74,6 +74,39 @@ save(rf, file='./RFmodel.RData')
 train.test$classe <- as.factor(train.test$classe)
 predict <- predict(rf, newdata = train.test)
 confusionMatrix(predict, train.test$classe)
+
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction    A    B    C    D    E
+##          A 1389   12    0    1    0
+##          B    2  935    6    1    0
+##          C    3    2  845   12    2
+##          D    0    0    4  788    0
+##          E    1    0    0    2  899
+## 
+## Overall Statistics
+##                                          
+##                Accuracy : 0.9902         
+##                  95% CI : (0.987, 0.9928)
+##     No Information Rate : 0.2845         
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16      
+##                                          
+##                   Kappa : 0.9876         
+##                                          
+##  Mcnemar&#39;s Test P-Value : NA             
+## 
+## Statistics by Class:
+## 
+##                      Class: A Class: B Class: C Class: D Class: E
+## Sensitivity            0.9957   0.9852   0.9883   0.9801   0.9978
+## Specificity            0.9963   0.9977   0.9953   0.9990   0.9993
+## Pos Pred Value         0.9907   0.9905   0.9780   0.9949   0.9967
+## Neg Pred Value         0.9983   0.9965   0.9975   0.9961   0.9995
+## Prevalence             0.2845   0.1935   0.1743   0.1639   0.1837
+## Detection Rate         0.2832   0.1907   0.1723   0.1607   0.1833
+## Detection Prevalence   0.2859   0.1925   0.1762   0.1615   0.1839
+## Balanced Accuracy      0.9960   0.9915   0.9918   0.9896   0.9985
 ```
 The random forest model has an accuracy of 99%. This gives us an out of sample expected error of 1%, which gives us high confidence that our model will make accurate predictions, with incorrect classifications 1% of the time. 
 
@@ -82,5 +115,7 @@ The random forest model has an accuracy of 99%. This gives us an out of sample e
 Lastly, we use the trained and validated random forest model to predict using the test data provided in the submission instructions. 
 ```{r}
 predict(rf, newdata = test)
+##  [1] B A B A A E D B A A B C B A E E A B B B
+## Levels: A B C D E
 ```
 
