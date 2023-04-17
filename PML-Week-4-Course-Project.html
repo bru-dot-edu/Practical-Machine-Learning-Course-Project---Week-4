@@ -392,12 +392,12 @@ library(randomForest)</code></pre>
 <p>The test data are available here: <a href="https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv" class="uri">https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv</a>”</p>
 <p>Load in data and drop columns that have NA entries. Also, remove
 columns that are irrelevant for analysis (first seven columns).</p>
-<pre class="r"><code>train &lt;- read.csv(&#39;C:/Users/cbrueck/Documents/Coursera/Practical-Machine-Learning-Course-Project---Week-4/pml-training.csv&#39;, header=T, na.strings=c(&quot;NA&quot;, &quot;&quot;))
+<pre class="r"><code>train &lt;- read.csv(&#39;C:/Users/chris/Documents/Coursera/Practical-Machine-Learning-Course-Project---Week-4/pml-training.csv&#39;, header=T, na.strings=c(&quot;NA&quot;, &quot;&quot;))
 anyNA.train &lt;- sapply(train, function(x) sum(is.na(x)))
 train &lt;- train[anyNA.train == 0]
 train &lt;- train[,-c(1:7)]
 
-test &lt;- read.csv(&#39;C:/Users/cbrueck/Documents/Coursera/Practical-Machine-Learning-Course-Project---Week-4/pml-testing.csv&#39;, header=T, na.strings=c(&quot;NA&quot;, &quot;&quot;))
+test &lt;- read.csv(&#39;C:/Users/chris/Documents/Coursera/Practical-Machine-Learning-Course-Project---Week-4/pml-testing.csv&#39;, header=T, na.strings=c(&quot;NA&quot;, &quot;&quot;))
 anyNA.test &lt;- sapply(test, function(x) sum(is.na(x)))
 test &lt;- test[anyNA.test == 0]
 test &lt;- test[,-c(1:7)]</code></pre>
@@ -429,34 +429,34 @@ confusionMatrix(predict, train.test$classe)</code></pre>
 ## 
 ##           Reference
 ## Prediction    A    B    C    D    E
-##          A 1390    5    0    0    0
-##          B    4  943    7    0    0
-##          C    0    1  846   15    4
-##          D    0    0    2  788    1
-##          E    1    0    0    1  896
+##          A 1393    4    0    0    0
+##          B    2  944   11    0    0
+##          C    0    1  844   19    3
+##          D    0    0    0  784    4
+##          E    0    0    0    1  894
 ## 
 ## Overall Statistics
-##                                          
-##                Accuracy : 0.9916         
-##                  95% CI : (0.9887, 0.994)
-##     No Information Rate : 0.2845         
-##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16      
-##                                          
-##                   Kappa : 0.9894         
-##                                          
-##  Mcnemar&#39;s Test P-Value : NA             
+##                                           
+##                Accuracy : 0.9908          
+##                  95% CI : (0.9877, 0.9933)
+##     No Information Rate : 0.2845          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.9884          
+##                                           
+##  Mcnemar&#39;s Test P-Value : NA              
 ## 
 ## Statistics by Class:
 ## 
 ##                      Class: A Class: B Class: C Class: D Class: E
-## Sensitivity            0.9964   0.9937   0.9895   0.9801   0.9945
-## Specificity            0.9986   0.9972   0.9951   0.9993   0.9995
-## Pos Pred Value         0.9964   0.9885   0.9769   0.9962   0.9978
-## Neg Pred Value         0.9986   0.9985   0.9978   0.9961   0.9988
+## Sensitivity            0.9986   0.9947   0.9871   0.9751   0.9922
+## Specificity            0.9989   0.9967   0.9943   0.9990   0.9998
+## Pos Pred Value         0.9971   0.9864   0.9735   0.9949   0.9989
+## Neg Pred Value         0.9994   0.9987   0.9973   0.9951   0.9983
 ## Prevalence             0.2845   0.1935   0.1743   0.1639   0.1837
-## Detection Rate         0.2834   0.1923   0.1725   0.1607   0.1827
-## Detection Prevalence   0.2845   0.1945   0.1766   0.1613   0.1831
-## Balanced Accuracy      0.9975   0.9954   0.9923   0.9897   0.9970</code></pre>
+## Detection Rate         0.2841   0.1925   0.1721   0.1599   0.1823
+## Detection Prevalence   0.2849   0.1951   0.1768   0.1607   0.1825
+## Balanced Accuracy      0.9987   0.9957   0.9907   0.9871   0.9960</code></pre>
 <p>The random forest model has an accuracy of 99%. This gives us an out
 of sample expected error of 1%, which gives us high confidence that our
 model will make accurate predictions, with incorrect classifications 1%

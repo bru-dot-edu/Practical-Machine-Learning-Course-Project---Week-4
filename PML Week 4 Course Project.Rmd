@@ -37,12 +37,12 @@ https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"
 Load in data and drop columns that have NA entries. Also, remove columns that are irrelevant for analysis (first seven columns).
 
 ```{r}
-train <- read.csv('C:/Users/cbrueck/Documents/Coursera/Practical-Machine-Learning-Course-Project---Week-4/pml-training.csv', header=T, na.strings=c("NA", ""))
+train <- read.csv('C:/Users/chris/Documents/Coursera/Practical-Machine-Learning-Course-Project---Week-4/pml-training.csv', header=T, na.strings=c("NA", ""))
 anyNA.train <- sapply(train, function(x) sum(is.na(x)))
 train <- train[anyNA.train == 0]
 train <- train[,-c(1:7)]
 
-test <- read.csv('C:/Users/cbrueck/Documents/Coursera/Practical-Machine-Learning-Course-Project---Week-4/pml-testing.csv', header=T, na.strings=c("NA", ""))
+test <- read.csv('C:/Users/chris/Documents/Coursera/Practical-Machine-Learning-Course-Project---Week-4/pml-testing.csv', header=T, na.strings=c("NA", ""))
 anyNA.test <- sapply(test, function(x) sum(is.na(x)))
 test <- test[anyNA.test == 0]
 test <- test[,-c(1:7)]
